@@ -1,4 +1,5 @@
 margin = 40;
+let grainSize = 1;
 
 function setup(){
     createCanvas(660, 660);
@@ -9,14 +10,30 @@ function setup(){
     fill(0);
     noStroke();
     text("The grid", (width-margin)/2, 25);
+    grain();
+
 }
 
 function draw(){
-    
+
+}
+
+function grain(){
+    push()
+    blendMode(SOFT_LIGHT)
+    noStroke()
+    for(i = 0; i < width; i += grainSize){
+        for(j=0; j<height; j += grainSize){
+            fill(150*noise(i*0.9,j*0.9))
+            square(i,j,grainSize)
+        }
+    }
+    pop()
 }
 
 function drawGrid(){
     //blending
+    push()
     noFill();
     stroke(50);
     rect(margin, margin, width - 2 * margin, height - 2 * margin);
@@ -64,4 +81,6 @@ function drawGrid(){
         vertex(width-margin, height-margin);
         vertex(width-10, height-margin);
     endShape();
+
+    pop()
 }
