@@ -1,5 +1,5 @@
 function setup() {
-    createCanvas(400, 400);
+    createCanvas(700, 700);
     background(0);
     //noLoop(); // Pas besoin de redessiner continuellement dans cet exemple
 }
@@ -23,11 +23,14 @@ function bezierHandlesTest(){
     let p1 = createVector(x1, y1);
     let p2 = createVector(300, 200);
     let p3 = createVector(350, 50);
+    let p4 = createVector(400, 200);
+    let p5 = createVector(450, 50);
 
     // Dessine la courbe de Bézier
     noFill();
     stroke(255);
     bezier(p0.x, p0.y, p1.x, p1.y, p2.x, p2.y, p3.x, p3.y);
+    bezier(p3.x, p3.y, p4.x, -p4.y, p5.x, p5.y, p5.x, p5.y);
     
     // dessiner le vectuer de Bézier
     fill(255, 0, 0);
@@ -58,3 +61,7 @@ function bezierFlame(){
     noStroke()
     bezier(v1.x, v1.y, b1.x, b1.y, b2.x, b2.y, v2.x, v2.y);
 }
+
+window.setup = setup; 
+window.draw = draw;
+window.keyPressed = keyPressed;
